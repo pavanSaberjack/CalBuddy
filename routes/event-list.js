@@ -7,7 +7,7 @@ const addEventData = require('./add-event');
 router.get('/', (req, res, next) => {
     res.render('event-list.ejs', { 
         pageTitle: 'My events',
-        prods: addEventData.events,
+        eventList: addEventData.events,
         path: '/'
      });
 });

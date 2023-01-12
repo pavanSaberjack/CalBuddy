@@ -4,22 +4,22 @@
     margin: auto;
 }
 
-.product-item {
+.event-item {
     width: 20rem;
     max-width: 95%;
 }
 
-.product__title {
+.event__title {
     font-size: 1.2rem;
     text-align: center;
 }
 
-.product__price {
+.event__price {
     text-align: center;
     color: #4d4d4d;
     margin-bottom: 0.5rem;
 }
 
-.product__description {
+.event__description {
     text-align: center;
 }
