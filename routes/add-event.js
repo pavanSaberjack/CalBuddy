@@ -11,7 +11,7 @@ router.get('/add-event', (req, res, next) => {
 });
 
 router.post('/add-event', (req, res, next) => {    
-    products.push( {title: req.body.title});
+    events.push( {title: req.body.title});
     res.redirect('/');
 });
 
