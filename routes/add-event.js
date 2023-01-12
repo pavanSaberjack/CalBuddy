@@ -1,19 +1,10 @@
 const express = require('express');
 
-const events = []
+const eventsController = require('../controllers/events');
+
 const router = express.Router();
 
-router.get('/add-event', (req, res, next) => {
-    res.render('add-event.ejs', {
-        pageTitle: 'Add Event',
-        path: '/admin/add-event'
-    });
-});
+router.get('/add-event', eventsController.getAddEvents);
+router.post('/add-event', eventsController.postAddEvent);
 
-router.post('/add-event', (req, res, next) => {    
-    events.push( {title: req.body.title});
-    res.redirect('/');
-});
-
-exports.router = router;
-exports.events = events;
+module.exports = router;

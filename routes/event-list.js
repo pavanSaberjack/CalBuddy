@@ -1,15 +1,9 @@
 const express = require('express');
 
-const router = express.Router();
+const eventsController = require('../controllers/events');
 
-const addEventData = require('./add-event');
+const router = express.Router(); 
 
-router.get('/', (req, res, next) => {
-    res.render('event-list.ejs', { 
-        pageTitle: 'My events',
-        eventList: addEventData.events,
-        path: '/'
-     });
-});
+router.get('/', eventsController.getEventsList);
 
 module.exports = router;
