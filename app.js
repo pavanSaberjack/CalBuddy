@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 // routes
 const createInviteRouter = require('./routes/create-invite');
 const invitesListRouter = require('./routes/invites-list');
+const userRouter = require('./routes/user-detail');
+
 const rootDir = require('./util/path');
 
 //controllers
@@ -23,6 +25,7 @@ app.use(express.static(path.join(rootDir, 'public')));
 
 app.use(createInviteRouter);
 app.use(invitesListRouter);
+app.use(userRouter);
 
 app.use(errorController.get404);
 
