@@ -1,15 +1,15 @@
-const events = [];
+const invites = [];
 
-module.exports = class Event {
+module.exports = class Invite {
     constructor(t) {
         this.title = t;
     }
 
     save() {
-        events.push(this);
+        invites.push(this);
     }
 
     static fetchAll() {
-        return events;
+        return invites;
     }
 }

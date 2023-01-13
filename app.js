@@ -4,8 +4,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 // routes
-const addEventsRouter = require('./routes/add-event');
-const eventListRouter = require('./routes/event-list');
+const createInviteRouter = require('./routes/create-invite');
+const invitesListRouter = require('./routes/invites-list');
 const rootDir = require('./util/path');
 
 //controllers
@@ -21,8 +21,8 @@ app.set('views', 'views');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(rootDir, 'public')));
 
-app.use(addEventsRouter);
-app.use(eventListRouter);
+app.use(createInviteRouter);
+app.use(invitesListRouter);
 
 app.use(errorController.get404);
 

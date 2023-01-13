@@ -1,8 +1,16 @@
 <header class="main-header">
     <nav class="main-header__nav">
         <ul class="main-header__item-list">
-            <li class="main-header__item"><a class="<%= path === '/' ? 'active': '' %>" href="/">Events</a></li>
-            <li class="main-header__item"><a class="<%= path === '/add-event' ? 'active': '' %>" href="/add-event">Add Event</a></li>
+            <li class="main-header__item">
+                <a class="<%= path === '/' ? 'active': '' %>" href="/">My Calendar</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/create-invite' ? 'active': '' %>" href="/create-invite">Create</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/profile' ? 'active': '' %>" href="/profile">Profile</a>
+            </li>
+
         </ul>
     </nav>
 </header>
