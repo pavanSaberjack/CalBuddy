@@ -1,8 +1,10 @@
 const invites = [];
 
 module.exports = class Invite {
-    constructor(t) {
-        this.title = t;
+    constructor(title, inviteId, requiredMemberEmailIds) {
+        this.title = title;
+        this.inviteId = inviteId;
+        this.requiredMemberEmailIds = requiredMemberEmailIds
     }
 
     save() {
