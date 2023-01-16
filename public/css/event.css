@@ -5,13 +5,12 @@
 }
 
 .event-item {
-    width: 20rem;
     max-width: 95%;
 }
 
 .event__title {
     font-size: 1.2rem;
-    text-align: center;
+    text-align: left;
 }
 
 .event__price {

@@ -9,22 +9,22 @@
         <% if (eventList.length > 0) { %>
             <h1>My events</h1>
             <p>List of all the events...</p>
-            <div class="grid">
+            <div class="list">
                 <% for (let event of eventList) { %>
                     <article class="card event-item">
                         <header class="card__header">
                             <h1 class="event__title"><%= event.title %></h1>
                         </header>
-                        <div class="card__image">
+                        <!-- <div class="card__image">
                             <img src="https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png" alt="A Book">
-                        </div>
-                        <div class="card__content">
+                        </div> -->
+                        <!-- <div class="card__content">
                             <h2 class="event__price">$19.99</h2>
                             <p class="event__description">A very interesting book about so many even more interesting things!</p>
-                        </div>
-                        <div class="card__actions">
+                        </div> -->
+                        <!-- <div class="card__actions">
                             <button class="btn">Add to Cart</button>
-                        </div>
+                        </div> -->
                     </article>
                 <% } %>
             </div>

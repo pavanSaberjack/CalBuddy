@@ -95,6 +95,11 @@ async function listEvents(auth) {
 }
 
 async function getMyEvents() {
+  // TODO: Temp fix to avoid calling APIs
+  if (myEvents.length > 0) {
+    return myEvents;
+  }
+
   await authorize().then(listEvents).catch(console.error);
   return myEvents;
 }

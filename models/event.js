@@ -14,18 +14,8 @@ module.exports = class Invite {
     }
 
     static fetchAll(cb) {
-
         googleServices.getMyEvents().then((list) => {
             cb(list);
-        });
-
-        // googleServices((list) => {
-        //     cb(list);
-        // })
-
-        // googleServices.getMyEvents((list) => {
-        //     this.invites.push(list);
-        //     cb(list) ;
-        // })        
+        });   
     }
 }
