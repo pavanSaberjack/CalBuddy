@@ -12,6 +12,7 @@ const SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
 const TOKEN_PATH = path.join(process.cwd(), 'google-services/token.json');
 const CREDENTIALS_PATH = path.join(process.cwd(), 'google-services/credentials.json');
 
+// storing the events locally
 const myEvents = [];
 
 /**
@@ -99,29 +100,3 @@ async function getMyEvents() {
 }
 
 exports.getMyEvents = getMyEvents;
-
-// exports.getMyEvents = ((list) => {
-//   authorize()
-//     .then((client) => {
-//       listEvents(client)
-//         .then(events => {
-//           console.log(myEvents);
-//           return myEvents;
-//         });
-//     })
-//     .catch(console.error);
-
-//   // return authorize().then(listEvents).catch(console.error);
-
-//   // return new Promise(resolve => {
-//   //   resolve();
-//   // });
-// });
-
-// module.exports = ((cb) => {
-
-//   authorize((auth) => {
-//     listEvents(auth);
-//     cb(myEvents);
-//   });
-// })
