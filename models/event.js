@@ -1,21 +1,31 @@
 const { google } = require('googleapis');
 const googleServices = require('../google-services/google-calendar-service');
-const invites = [];
+const events = [];
 
-module.exports = class Invite {
-    constructor(title, inviteId, requiredMemberEmailIds) {
+module.exports = class Event {
+    constructor(title, description, eventId, start) {
         this.title = title;
-        this.inviteId = inviteId;
-        this.requiredMemberEmailIds = requiredMemberEmailIds
+        this.description = description
+        this.eventId = eventId;
+        this.start = start;
+        // this.requiredMemberEmailIds = requiredMemberEmailIds
     }
 
     save() {
-        // invites.push(this);
+        events.push(this);
     }
 
     static fetchAll(cb) {
-        googleServices.getMyEvents().then((list) => {
-            cb(list);
+        googleServices.getMyEvents().then((calendarEvents) => {
+            calendarEvents.map((calendarEvent, i) => {
+                let title = calendarEvent.summary;
+                let eventId = calendarEvent.id;
+                let description = calendarEvent.description;
+                let start = calendarEvent.start.dateTime || calendarEvent.start.date;
+                const event = new Event(title, description, eventId, start);
+                events.push(event);
+            });
+            cb(events);
         });   
     }
 }

@@ -14,11 +14,11 @@
 }
 
 .event__price {
-    text-align: center;
+    text-align: left;
     color: #4d4d4d;
     margin-bottom: 0.5rem;
 }
 
 .event__description {
-    text-align: center;
+    text-align: left;
 }

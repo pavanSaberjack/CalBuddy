@@ -86,11 +86,12 @@ async function listEvents(auth) {
     console.log('No upcoming events found.');
     return;
   }
-  console.log('Upcoming 10 events:');
+  // myEvents.push(events);
+  // console.log('Upcoming 10 events:');
   events.map((event, i) => {
     const start = event.start.dateTime || event.start.date;
     console.log(`${start} - ${event.summary}`);
-    myEvents.push({ title: event.summary});
+    myEvents.push(event);
   });
 }
 
