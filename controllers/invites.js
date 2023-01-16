@@ -14,10 +14,11 @@ exports.postCreateInvite = (req, res, next) => {
 };
 
 exports.getInvitesList = (req, res, next) => {
-    const invites = Invite.fetchAll();
-    res.render('calendar/invites-list.ejs', { 
-        pageTitle: 'My Invites',
-        eventList: invites,
-        path: '/'
-     });
+    Invite.fetchAll((invites) => {
+        res.render('calendar/invites-list.ejs', { 
+            pageTitle: 'My Invites',
+            eventList: invites,
+            path: '/'
+         });
+    });
 };

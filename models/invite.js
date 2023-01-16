@@ -1,3 +1,5 @@
+const { google } = require('googleapis');
+const googleServices = require('../google-services/google-calendar-service');
 const invites = [];
 
 module.exports = class Invite {
@@ -8,10 +10,22 @@ module.exports = class Invite {
     }
 
     save() {
-        invites.push(this);
+        // invites.push(this);
     }
 
-    static fetchAll() {
-        return invites;
+    static fetchAll(cb) {
+
+        googleServices.getMyEvents().then((list) => {
+            cb(list);
+        });
+
+        // googleServices((list) => {
+        //     cb(list);
+        // })
+
+        // googleServices.getMyEvents((list) => {
+        //     this.invites.push(list);
+        //     cb(list) ;
+        // })        
     }
 }
