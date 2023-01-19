@@ -95,6 +95,17 @@ async function listEvents(auth) {
   });
 }
 
+async function deleteEvent(eventId) {
+  const auth = await authorize();
+
+  const calendar = google.calendar({version: 'v3', auth});
+  const res = await calendar.events.delete({
+    calendarId: 'primary',
+    eventId: eventId
+  });
+  console.log(res);
+}
+
 async function getMyEvents() {
   // TODO: Temp fix to avoid calling APIs
   if (myEvents.length > 0) {
@@ -106,3 +117,4 @@ async function getMyEvents() {
 }
 
 exports.getMyEvents = getMyEvents;
+exports.deleteEvent = deleteEvent;

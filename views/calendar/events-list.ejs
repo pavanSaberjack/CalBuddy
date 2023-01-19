@@ -20,7 +20,13 @@
                         </div> -->
                         <div class="card__content">
                             <h2 class="event__price"><%= event.start %></h2>
-                            <p class="event__description"><%= event.description %></p>
+                            <p class="event__description"><%= event.description %></p>                            
+                            <% if (event.attendees.length > 0) { %>
+                                <h3>Attendees</h3>
+                                <% for (let attendee of event.attendees) { %>
+                                    <li class="event__description"><%= attendee.email %></li>
+                                <% } %>
+                            <% } %>
                         </div>
                         <!-- <div class="card__actions">
                             <button class="btn">Add to Cart</button>
