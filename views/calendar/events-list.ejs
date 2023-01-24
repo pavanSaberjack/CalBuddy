@@ -24,7 +24,7 @@
                             <% if (event.attendees.length > 0) { %>
                                 <h3>Attendees</h3>
                                 <% for (let attendee of event.attendees) { %>
-                                    <li class="event__description"><%= attendee.email %></li>
+                                    <li class="event__description"><%= attendee.email %> <%= attendee.optional %></li>
                                 <% } %>
                             <% } %>
                         </div>

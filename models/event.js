@@ -1,28 +1,8 @@
 const { google } = require('googleapis');
 const googleServices = require('../google-services/google-calendar-service');
+
+const Attendee = require('./attendee');
 const events = [];
-
-class Attendee {
-    constructor(email, responseStatus) {
-        this.email = email;
-        this.responseStatus = responseStatus;
-    }
-
-    static getAttendeesList(attendeesList) {
-        if (!attendeesList || attendeesList.length === 0) {
-            return []
-        }
-
-        const attendees = [];
-        attendeesList.map((member, i) => {
-            let email = member.email;
-            let responseStatus = member.responseStatus; 
-            const attendee = new Attendee(email, responseStatus);
-            attendees.push(attendee);
-        });
-        return attendees;
-    }
-}
 
 module.exports = class Event {
     constructor(title, description, eventId, start, attendees) {
