@@ -19,6 +19,26 @@ exports.getEventsList = (req, res, next) => {
             pageTitle: 'My Events',
             eventList: events,
             path: '/'
-         });
+        });
     });
+};
+
+exports.getEventsDetail = (req, res, next) => {
+    Event.fetchAll((events) => {
+        res.render('calendar/event-detail.ejs', { 
+            pageTitle: 'Event Detail',
+            event: events[0],
+            path: '/events/'        
+        });
+    });
+};
+
+exports.deleteEvent = (req, res, next) => {
+    Event.delete( req.body.eventId, (events) => {
+        res.render('calendar/events-list.ejs', { 
+            pageTitle: 'My Events',
+            eventList: events,
+            path: '/'
+        });
+    })
 };

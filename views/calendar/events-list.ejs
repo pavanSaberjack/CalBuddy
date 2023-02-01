@@ -28,9 +28,22 @@
                                 <% } %>
                             <% } %>
                         </div>
-                        <!-- <div class="card__actions">
-                            <button class="btn">Add to Cart</button>
-                        </div> -->
+                        <div class="card__actions">
+                            <form action="/events/">
+                                <button class="btn">Details</button>
+                            </form>                            
+                        </div>
+                        <div class="card__actions">
+                            <form action="/delete-event" method="POST">
+                                <input type="hidden" name="eventId" value="<%= event.eventId %>">
+                                <button class="btn" type="submit">Delete</button>
+                              </form>
+
+                            <!-- <form action="/delete" method="POST">
+                                <input type="hidden" name="eventId" id="eventId" value="<%= event.eventId %>">
+                                <button class="btn" type="submit">Delete</button>
+                            </form>                             -->
+                        </div>
                     </article>
                 <% } %>
             </div>

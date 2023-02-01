@@ -5,7 +5,7 @@ const {authenticate} = require('@google-cloud/local-auth');
 const {google} = require('googleapis');
 
 // If modifying these scopes, delete token.json.
-const SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
+const SCOPES = ['https://www.googleapis.com/auth/calendar'];
 // The file token.json stores the user's access and refresh tokens, and is
 // created automatically when the authorization flow completes for the first
 // time.
@@ -103,15 +103,10 @@ async function deleteEvent(eventId) {
     calendarId: 'primary',
     eventId: eventId
   });
-  console.log(res);
+  console.log(res.status);
 }
 
 async function getMyEvents() {
-  // TODO: Temp fix to avoid calling APIs
-  if (myEvents.length > 0) {
-    return myEvents;
-  }
-
   await authorize().then(listEvents).catch(console.error);
   return myEvents;
 }

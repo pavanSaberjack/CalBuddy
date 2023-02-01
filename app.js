@@ -2,6 +2,7 @@ const path = require('path');
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
 // routes
 const createEventRouter = require('./routes/create-event');
@@ -22,6 +23,13 @@ app.set('views', 'views');
 // parsing the form data
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(rootDir, 'public')));
+app.use(methodOverride('_method'));
+
+app.delete('/delete/:id', (request, response) => {
+    // Handle the delete action and remove the object with the specified ID
+    console.log(request.url);
+    console.log("hereeeee");
+});
 
 app.use(createEventRouter);
 app.use(eventsListRouter);

@@ -29,9 +29,9 @@ module.exports = class Event {
 
     static fetchAll(cb) {
         // TODO: Temp fix to avoid calling APIs
-        if (events.length > 0) {
-            return cb(events);
-        }
+        // if (events.length > 0) {
+        //     return cb(events);
+        // }
 
         googleServices.getMyEvents().then((calendarEvents) => {
             calendarEvents.map((calendarEvent, i) => {
@@ -47,5 +47,48 @@ module.exports = class Event {
             });
             cb(events);
         });   
+    }
+
+    static delete(eventId, cb) {
+        // TODO: Temp fix to avoid calling APIs
+        if (!eventId) {
+            return cb();
+        }
+
+        googleServices.deleteEvent(eventId).then(() => {
+            // googleServices.getMyEvents().then((calendarEvents) => {
+            //     calendarEvents.map((calendarEvent, i) => {
+            //         let title = calendarEvent.summary;
+            //         let eventId = calendarEvent.id;
+            //         let description = calendarEvent.description;
+            //         let start = calendarEvent.start.dateTime || calendarEvent.start.date;
+            //         let attendeesList = Attendee.getAttendeesList(calendarEvent.attendees);
+            //         const event = new Event(title, description, eventId, start, attendeesList);
+            //         event.attendeesStr = event.getAttendeesListAsString();
+            //         console.log(event.getAttendeesListAsString());
+            //         events.push(event);
+            //     });
+            //     cb(events);
+            // });  
+
+            const filteredArray = events.filter(obj => obj.eventId !== eventId);
+            events.splice(0, events.length);
+            events.push(...filteredArray);
+
+            // events.map((calendarEvent, i) => {
+            //     if (calendarEvent.id !== eventId) {
+            //         let title = calendarEvent.summary;
+            //         let eventId = calendarEvent.id;
+            //         let description = calendarEvent.description;
+            //         let start = calendarEvent.start.dateTime || calendarEvent.start.date;
+            //         let attendeesList = Attendee.getAttendeesList(calendarEvent.attendees);
+            //         const event = new Event(title, description, eventId, start, attendeesList);
+            //         event.attendeesStr = event.getAttendeesListAsString();
+            //         console.log(event.getAttendeesListAsString());
+            //         events.push(event);
+            //     }
+            // })
+            cb(events);
+        });
     }
 }
