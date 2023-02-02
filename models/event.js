@@ -42,7 +42,7 @@ module.exports = class Event {
                 let attendeesList = Attendee.getAttendeesList(calendarEvent.attendees);
                 const event = new Event(title, description, eventId, start, attendeesList);
                 event.attendeesStr = event.getAttendeesListAsString();
-                console.log(event.getAttendeesListAsString());
+                // console.log(event.getAttendeesListAsString());
                 events.push(event);
             });
             cb(events);
@@ -50,45 +50,12 @@ module.exports = class Event {
     }
 
     static delete(eventId, cb) {
-        // TODO: Temp fix to avoid calling APIs
         if (!eventId) {
             return cb();
         }
 
         googleServices.deleteEvent(eventId).then(() => {
-            // googleServices.getMyEvents().then((calendarEvents) => {
-            //     calendarEvents.map((calendarEvent, i) => {
-            //         let title = calendarEvent.summary;
-            //         let eventId = calendarEvent.id;
-            //         let description = calendarEvent.description;
-            //         let start = calendarEvent.start.dateTime || calendarEvent.start.date;
-            //         let attendeesList = Attendee.getAttendeesList(calendarEvent.attendees);
-            //         const event = new Event(title, description, eventId, start, attendeesList);
-            //         event.attendeesStr = event.getAttendeesListAsString();
-            //         console.log(event.getAttendeesListAsString());
-            //         events.push(event);
-            //     });
-            //     cb(events);
-            // });  
-
-            const filteredArray = events.filter(obj => obj.eventId !== eventId);
-            events.splice(0, events.length);
-            events.push(...filteredArray);
-
-            // events.map((calendarEvent, i) => {
-            //     if (calendarEvent.id !== eventId) {
-            //         let title = calendarEvent.summary;
-            //         let eventId = calendarEvent.id;
-            //         let description = calendarEvent.description;
-            //         let start = calendarEvent.start.dateTime || calendarEvent.start.date;
-            //         let attendeesList = Attendee.getAttendeesList(calendarEvent.attendees);
-            //         const event = new Event(title, description, eventId, start, attendeesList);
-            //         event.attendeesStr = event.getAttendeesListAsString();
-            //         console.log(event.getAttendeesListAsString());
-            //         events.push(event);
-            //     }
-            // })
-            cb(events);
+            cb();
         });
     }
 }

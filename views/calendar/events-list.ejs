@@ -4,7 +4,6 @@
 
 <body>
     <%- include('../includes/navigation.ejs') %>
-
     <main>
         <% if (eventList.length > 0) { %>
             <h1>My events</h1>
@@ -34,15 +33,11 @@
                             </form>                            
                         </div>
                         <div class="card__actions">
-                            <form action="/delete-event" method="POST">
+                            <form action="/" method="POST">
                                 <input type="hidden" name="eventId" value="<%= event.eventId %>">
+                                <input type="hidden" name="action" value="delete-event">
                                 <button class="btn" type="submit">Delete</button>
-                              </form>
-
-                            <!-- <form action="/delete" method="POST">
-                                <input type="hidden" name="eventId" id="eventId" value="<%= event.eventId %>">
-                                <button class="btn" type="submit">Delete</button>
-                            </form>                             -->
+                            </form>                            
                         </div>
                     </article>
                 <% } %>

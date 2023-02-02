@@ -25,10 +25,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(rootDir, 'public')));
 app.use(methodOverride('_method'));
 
-app.delete('/delete/:id', (request, response) => {
-    // Handle the delete action and remove the object with the specified ID
-    console.log(request.url);
-    console.log("hereeeee");
+app.use((req, res, next) => {
+    res.setHeader('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+    next();
 });
 
 app.use(createEventRouter);

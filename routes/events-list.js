@@ -4,14 +4,17 @@ const eventsController = require('../controllers/events');
 
 const router = express.Router(); 
 
-router.use((request, response, next) => {
-    console.log(request.url);
-    next();
+// router.get('/', eventsController.getEventsList);
+
+router.use('/',(request, response, next) => {
+
+    let action = request.body.action;
+    if (action && action === 'delete-event') {
+        eventsController.deleteEvent(request, response, next);
+    } else {
+        eventsController.getEventsList(request, response, next);
+    }
 });
-
-router.get('/', eventsController.getEventsList);
-
-router.post('/delete-event', eventsController.deleteEvent);
 
 router.get('/events', eventsController.getEventsDetail);
 

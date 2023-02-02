@@ -34,11 +34,7 @@ exports.getEventsDetail = (req, res, next) => {
 };
 
 exports.deleteEvent = (req, res, next) => {
-    Event.delete( req.body.eventId, (events) => {
-        res.render('calendar/events-list.ejs', { 
-            pageTitle: 'My Events',
-            eventList: events,
-            path: '/'
-        });
-    })
+    Event.delete(req.body.eventId, () => {
+        this.getEventsList(req, res, next);
+    });
 };
